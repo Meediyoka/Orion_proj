@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="public/css/loginstyle.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Login - Vital Signs</title>
+
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="body"></div>
+    <div class="grad"></div>
+    <div class="header" id="title_header">
+        <div>Vital<span>Signs</span></div>
+    </div>
+    <br>
+    <div class="login" id="div_login">
+        <form role="form">
+            <input type="text" placeholder="E-mail" id="email" name="email" type="email" autofocus="">
+            <br>
+            <input type="password" placeholder="Password" id="pwd" name="password" value="">
+            <br>
+            <input type="button" value="Login" onclick="login('login')">
+            <input type="button" id="button2" value="Register" onclick="register()">
+        </form>
+    </div>
+    <div class="register_select" id="register_select">
+        Select account type
+        <input type="button" id="button2" value="User" onclick="user()">
+        <input type="button" id="button2" value="Admin" onclick="admin()">
+
+    </div>
+
+    <div class="register" id="div_register">
+        <p>* Required fields, Disclaimer: Private information is stored. (policy placeholder)</p>
+        <input type="name" placeholder="First-Name*" id="reg-firstname" name="reg-firstname">
+        <br>
+        <input type="name" placeholder="Middle-Name*" id="reg-middlename" name="reg-middlename">
+        <br>
+        <input type="name" placeholder="Last-Name*" id="reg-lastname" name="reg-lastname">
+        <br>
+        <input type="dob" placeholder="Date-of-Birth (YYYY/DD/MM)*" id="reg-dob" name="reg-dob">
+        <input type="gender" placeholder="Gender" id="reg-gender" name="reg-gender">
+        <br>
+        <input type="address" placeholder="Street Address*" id="reg-address" name="reg-address">
+        <br>
+        <input type="address" placeholder="Suburb*" id="reg-suburb" name="reg-suburb">
+        <br>
+        <input type="address" placeholder="City*" id="reg-city" name="reg-city">
+        <br>
+        <input type="m-contact" placeholder="Mobile Number*" id="reg-mobilenum" name="reg-mobilenum">
+        <br>
+        <input type="h-contact" placeholder="Home-phone Number*" id="reg-homenum" name="reg-homenum">
+        <br>
+        <input type="text" placeholder="E-mail*" id="reg-email" name="reg-email" type="email">
+        <br>
+        <input type="password" placeholder="Password*" id="reg-pwd" name="password">
+        <br>
+        <input type="password" placeholder="Confirm Password*" id="confirm-pwd" name="password">
+        <br>
+        <input type="button" value="Register" onclick="signup_user('signup')">
+    </div>
+    <div class="register" id="div_admin">
+        <p>* Required fields, Disclaimer: Private information is stored. (policy placeholder)</p>
+        <input type="name" placeholder="First-Name*" id="regadmin-firstname" name="regadmin-firstname">
+        <input type="admin-form" placeholder="Practise Name" id="regadmin-practise" name="regadmin-practise">
+        <br>
+        <input type="name" placeholder="Middle-Name*" id="regadmin-middlename" name="regadmin-middlename">
+        <input type="admin-form" placeholder="Occupation" id="regadmin-occupation" name="regadmin-occupation">
+        <br>
+        <input type="name" placeholder="Last-Name*" id="regadmin-lastname" name="regadmin-lastname">
+        <br>
+        <input type="dob" placeholder="Date-of-Birth (YYYY/DD/MM)*" id="regadmin-dob" name="regadmin-dob">
+        <input type="gender" placeholder="Gender" id="regadmin-gender" name="regadmin-gender">
+        <br>
+        <input type="address" placeholder="Street Address*" id="regadmin-address" name="regadmin-address">
+        <input type="admin-form" placeholder="Business Address" id="regadmin-busaddress" name="regadmin-busaddress">
+        <br>
+        <input type="address" placeholder="Suburb*" id="regadmin-suburb" name="regadmin-suburb">
+        <input type="admin-form" placeholder="Business Suburb*" id="regadmin-bussuburb" name="regadmin-bussuburb">
+        <br>
+        <input type="address" placeholder="City*" id="regadmin-city" name="regadmin-city">
+        <input type="admin-form" placeholder="Business City" id="regadmin-buscity" name="regadmin-buscity">
+        <br>
+        <br>
+        <input type="m-contact" placeholder="Mobile Number*" id="regadmin-mobilenum" name="regadmin-mobilenum">
+        <br>
+        <input type="h-contact" placeholder="Home-phone Number*" id="regadmin-homenum" name="regadmin-homenum">
+        <br>
+        <input type="text" placeholder="E-mail*" id="regadmin-email" name="regadmin-email" type="email">
+        <br>
+        <input type="password" placeholder="Password*" id="regadmin-pwd" name="password">
+        <br>
+        <input type="password" placeholder="Confirm Password*" id="confirmadmin-pwd" name="password">
+        <br>
+        <input type="button" value="Register" onclick="signup_admin('signup')">
+    </div>
+
+    <div class="register" id="verification_landing">
+        You have been sent a verification email
+    </div>
+
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="public/js/jquery-1.11.1.min.js"></script>
+    <script src="public/js/amazon-cognito-identity.min.js"></script>
+    <script>
+        function login(id) {
+
+            var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
+            //var poolData = { UserPoolId : 'ap-southeast-1_LFIl6Lny1',
+            // ClientId : '7pqubjs3pjjuhmueidce2t2qu4'
+            var poolData = {
+                UserPoolId: 'ap-southeast-1_dA5gNALtB',
+                ClientId: '4q10i2gsdggtc8452s0ogvdp82'
+            };
+            //var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);	 	
+
+            var email = document.getElementById("email").value;
+            var pwd = document.getElementById("pwd").value;
+
+            var authenticationData = {
+                Username: email,
+                Password: pwd,
+            };
+            var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+            var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+            var userData = {
+                Username: email,
+                Pool: userPool
+            };
+
+            var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+            cognitoUser.authenticateUser(authenticationDetails, {
+                onSuccess: function(result) {
+                    console.log('access token + ' + result.getAccessToken().getJwtToken());
+
+                    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+                        IdentityPoolId: 'VitalSignsUsers', // your identity pool id here
+                        Logins: {
+                            // Change the key below according to the specific region your user pool is in.
+                            'cognito-idp.<ap-southeast-1>.amazonaws.com/<ap-southeast-1_dA5gNALtB>': result.getIdToken().getJwtToken()
+
+                        }
+                    });
+
+                    //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+
+                },
+
+                onFailure: function(error) {
+                    //console.error(error);
+                },
+                customChallenge: (ChallengeParameters) => {
+                    var challengeResponses = 'challenge-answer'
+                    cognitoUser.sendCustomChallengeAnswer(challengeResponses, (err, result) => {});
+                }
+            });
+
+            cognitoUser.getSession(function(err, session) {
+                if (err) {
+                    return;
+                }
+                console.log('session validity: ' + session.isValid());
+
+                // NOTE: getSession must be called to authenticate user before calling getUserAttributes
+                cognitoUser.getUserAttributes(function(err, attributes) {
+                    if (err) {
+                        // Handle error
+                    } else {
+                        cognitoUser.getUserAttributes(function(err, result) {
+
+                            if (err) {
+                                alert(err);
+                                return;
+                            }
+
+                            window.localStorage.setItem("subId", result[0].getValue());
+                            //window.localStorage.setItem("att_address", result[1].getValue());						//localStorage of these values are strictly prohibited and are used solely for testing purposes
+                            //window.localStorage.setItem("att_dob", result[2].getValue());							//Final builds will have these lines removed.
+                            //window.localStorage.setItem("att_verified", result[3].getValue());
+                            //window.localStorage.setItem("att_gender", result[4].getValue());
+                            //window.localStorage.setItem("att_homephone", result[5].getValue());
+                            //window.localStorage.setItem("att_phoneverified", result[6].getValue());
+                            //window.localStorage.setItem("att_middlename", result[7].getValue());
+                            //window.localStorage.setItem("att_city", result[8].getValue());
+                            //window.localStorage.setItem("att_name", result[9].getValue());
+                            //window.localStorage.setItem("att_mobile", result[10].getValue());
+                            //window.localStorage.setItem("att_lastname", result[11].getValue());
+                            //window.localStorage.setItem("att_email", result[12].getValue());
+                            //window.localStorage.setItem("att_suburb", result[13].getValue());
+
+                            window.location = "index.html"
+
+                            for (i = 0; i < result.length; i++) {
+                                console.log('attribute ' + result[i].getName() + ' has value ' + result[i].getValue());
+                            }
+
+                        });
+
+                    }
+
+                });
+
+            });
+
+        }
+
+        function register(id) {
+
+            x = document.getElementById("div_login");
+            y = document.getElementById("div_register");
+            z = document.getElementById("register_select");
+            a = document.getElementById("title_header");
+            b = document.getElementById("div_admin");
+            c = document.getElementById("verification_landing");
+            z.style.display = "block";
+            c.style.display = "hide";
+
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+                a.style.display = "none";
+
+            }
+
+        }
+
+        function user() {
+            z.style.display = "none";
+            y.style.display = "block";
+            a.style.display = "block";
+            c.style.display = "hide";
+        }
+
+        function admin() {
+            z.style.display = "none";
+            b.style.display = "block";
+            a.style.display = "block";
+            c.style.display = "hide";
+        }
+
+        function signup_user(id) {
+
+            var email = document.getElementById("reg-email").value;
+            var pwd = document.getElementById("reg-pwd").value;
+            var mobilenumber = document.getElementById("reg-mobilenum").value;
+            var homenumber = document.getElementById("reg-homenum").value;
+            var DOB = document.getElementById("reg-dob").value;
+            var gender = document.getElementById("reg-gender").value;
+            var firstname = document.getElementById("reg-firstname").value;
+            var lastname = document.getElementById("reg-lastname").value;
+            var middlename = document.getElementById("reg-middlename").value;
+            var address = document.getElementById("reg-address").value;
+            var suburb = document.getElementById("reg-suburb").value;
+            var city = document.getElementById("reg-city").value;
+
+            var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
+            var poolData = {
+                UserPoolId: 'ap-southeast-1_dA5gNALtB',
+                ClientId: '4q10i2gsdggtc8452s0ogvdp82'
+            };
+            var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+            var dataEmail = {
+                Name: 'email',
+                Value: email
+            };
+            var dataBirthDate = {
+                Name: 'birthdate',
+                Value: DOB
+            };
+            var dataFamilyName = {
+                Name: 'family_name',
+                Value: lastname
+            };
+            var dataMiddleName = {
+                Name: 'middle_name',
+                Value: middlename
+            };
+            var dataName = {
+                Name: 'name',
+                Value: firstname
+            };
+            var dataGender = {
+                Name: 'gender',
+                Value: gender
+            }
+            var dataAddress = {
+                Name: 'address',
+                Value: address
+            };
+            var dataSuburb = {
+                Name: 'custom:suburb',
+                Value: suburb
+            };
+            var dataCity = {
+                Name: 'custom:city',
+                Value: city
+            };
+            var dataPhoneNumber = {
+                Name: 'phone_number',
+                Value: mobilenumber
+            };
+            var dataHomePhone = {
+                Name: 'custom:home_phone',
+                Value: homenumber
+            };
+
+            var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+            var attributeDOB = new AmazonCognitoIdentity.CognitoUserAttribute(dataBirthDate);
+            var attributeFamilyName = new AmazonCognitoIdentity.CognitoUserAttribute(dataFamilyName);
+            var attributeMiddleName = new AmazonCognitoIdentity.CognitoUserAttribute(dataMiddleName);
+            var attributeName = new AmazonCognitoIdentity.CognitoUserAttribute(dataName);
+            var attributeGender = new AmazonCognitoIdentity.CognitoUserAttribute(dataGender);
+            var attributeAddress = new AmazonCognitoIdentity.CognitoUserAttribute(dataAddress);
+            var attributeSuburb = new AmazonCognitoIdentity.CognitoUserAttribute(dataSuburb);
+            var attributeCity = new AmazonCognitoIdentity.CognitoUserAttribute(dataCity);
+            var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(dataPhoneNumber);
+            var attributeHomePhone = new AmazonCognitoIdentity.CognitoUserAttribute(dataHomePhone);
+
+            var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+            var attributeList = [];
+
+            attributeList.push(attributeEmail);
+            attributeList.push(attributeDOB);
+            attributeList.push(attributeFamilyName);
+            attributeList.push(attributeMiddleName);
+            attributeList.push(attributeGender);
+            attributeList.push(attributeName);
+            attributeList.push(attributeAddress);
+            attributeList.push(attributeSuburb);
+            attributeList.push(attributeCity);
+            attributeList.push(attributePhoneNumber);
+            attributeList.push(attributeHomePhone);
+
+            var cognitoUser;
+
+            userPool.signUp(email, pwd, attributeList, null, function(err, result) {
+                if (err) {
+                    alert(err);
+                    return;
+                } else {
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                        y.style.display = "none";
+                        c.style.display = "block";
+                    }
+                    cognitoUser = result.user;
+                }
+            });
+        }
+
+        function signup_admin(id) {
+
+            var email = document.getElementById("regadmin-email").value;
+            var pwd = document.getElementById("regadmin-pwd").value;
+            var occupation = document.getElementById("regadmin-occupation").value;
+            var mobilenumber = document.getElementById("regadmin-mobilenum").value;
+            var homenumber = document.getElementById("regadmin-homenum").value;
+            var practisename = document.getElementById("regadmin-practise").value;
+            var DOB = document.getElementById("regadmin-dob").value;
+            var gender = document.getElementById("regadmin-gender").value;
+            var firstname = document.getElementById("regadmin-firstname").value;
+            var lastname = document.getElementById("regadmin-lastname").value;
+            var middlename = document.getElementById("regadmin-middlename").value;
+            var address = document.getElementById("regadmin-address").value;
+            var suburb = document.getElementById("regadmin-suburb").value;
+            var city = document.getElementById("regadmin-city").value;
+
+            var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
+            var poolData = {
+                UserPoolId: 'ap-southeast-1_ugANf5ZAx',
+                ClientId: '6ais15gj1a5fnqn8t9o9ruvta6'
+            };
+            var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+            var dataEmail = {
+                Name: 'email',
+                Value: email
+            };
+            var dataBirthDate = {
+                Name: 'birthdate',
+                Value: DOB
+            };
+            var dataFamilyName = {
+                Name: 'family_name',
+                Value: lastname
+            };
+            var dataMiddleName = {
+                Name: 'middle_name',
+                Value: middlename
+            };
+            var dataName = {
+                Name: 'name',
+                Value: firstname
+            };
+            var dataGender = {
+                Name: 'gender',
+                Value: gender
+            }
+            var dataAddress = {
+                Name: 'address',
+                Value: address
+            };
+            var dataSuburb = {
+                Name: 'custom:suburb',
+                Value: suburb
+            };
+            var dataCity = {
+                Name: 'custom:city',
+                Value: city
+            };
+            var dataPhoneNumber = {
+                Name: 'phone_number',
+                Value: mobilenumber
+            };
+            var dataHomePhone = {
+                Name: 'custom:home_phone',
+                Value: homenumber
+            };
+            var dataPractiseName = {
+                Name: 'custom:practise_name',
+                Value: practisename
+            };
+            var dataOccupation = {
+                Name: 'custom:occupation',
+                Value: occupation
+            };
+
+            var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+            var attributeDOB = new AmazonCognitoIdentity.CognitoUserAttribute(dataBirthDate);
+            var attributeFamilyName = new AmazonCognitoIdentity.CognitoUserAttribute(dataFamilyName);
+            var attributeMiddleName = new AmazonCognitoIdentity.CognitoUserAttribute(dataMiddleName);
+            var attributeName = new AmazonCognitoIdentity.CognitoUserAttribute(dataName);
+            var attributeGender = new AmazonCognitoIdentity.CognitoUserAttribute(dataGender);
+            var attributeAddress = new AmazonCognitoIdentity.CognitoUserAttribute(dataAddress);
+            var attributeSuburb = new AmazonCognitoIdentity.CognitoUserAttribute(dataSuburb);
+            var attributeCity = new AmazonCognitoIdentity.CognitoUserAttribute(dataCity);
+            var attributePhoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(dataPhoneNumber);
+            var attributeHomePhone = new AmazonCognitoIdentity.CognitoUserAttribute(dataHomePhone);
+            var attributePractiseName = new AmazonCognitoIdentity.CognitoUserAttribute(dataPractiseName);
+            var attributeOccupation = new AmazonCognitoIdentity.CognitoUserAttribute(dataOccupation)
+
+            var attributeList = [];
+
+            attributeList.push(attributeEmail);
+            attributeList.push(attributeDOB);
+            attributeList.push(attributeFamilyName);
+            attributeList.push(attributeMiddleName);
+            attributeList.push(attributeGender);
+            attributeList.push(attributeName);
+            attributeList.push(attributeAddress);
+            attributeList.push(attributeSuburb);
+            attributeList.push(attributeCity);
+            attributeList.push(attributePhoneNumber);
+            attributeList.push(attributeHomePhone);
+            attributeList.push(attributePractiseName);
+            attributeList.push(attributeOccupation);
+
+            var cognitoUser;
+
+            userPool.signUp(email, pwd, attributeList, null, function(err, result) {
+                if (err) {
+                    alert(err);
+                    return;
+                } else {
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                        y.style.display = "none";
+                        c.style.display = "block";
+                        b.style.display = "none";
+                    }
+                    cognitoUser = result.user;
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

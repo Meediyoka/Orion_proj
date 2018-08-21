@@ -1,0 +1,13 @@
+{
+  "bodyTemp": "37.4",
+  "concLevel": "Fine",
+  "dateCreated": 1521949000936,
+  "heartRate": "67",
+  "height": "95",
+  "oxySaturation": "91",
+  "respRate": "14",
+  "subId": "5c5c5d4c-fd21-4244-8f49-367cab09670c",
+  "suppOxy": "Yes",
+  "sysBP": "125",
+  "weight": "125"
+}

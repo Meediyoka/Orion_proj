@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login</title>
+	<link href="public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="public/css/datepicker3.css" rel="stylesheet">
+	<link href="public/css/styles.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body background="assets/img/backgrounds/loginbg.jpg">
+<a href = "index.html" > Home </a>
+	<div class="row" id = "login">
+		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+			<div class="login-panel panel panel-default" >
+				<div class="panel-heading">Log in</div>
+				<div class="panel-body">
+					<form role="form">
+						<fieldset>
+							<div class="form-group">
+								<input class="form-control" placeholder="E-mail" id = "email" name="email" type="email" autofocus="">
+							</div>
+							<div class="form-group">
+								<input class="form-control" placeholder="Password" id = "pwd" name="pwd" type="password" value="">
+							</div>
+							<div class="checkbox">
+								<label>
+									<input name="remember" type="checkbox" value="Remember Me">Remember Me
+								</label>
+							</div>
+								<button type="button" onclick = "login('login')">Login</button>
+								<button type="button" onclick = "signup('signup')" >Sign up</button>
+					</form>
+				</div>
+			</div>
+		</div><!-- /.col-->
+	</div><!-- /.row -->	
+	
+		<div class="row" id = "signup">
+		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+			<div class="login-panel panel panel-default">
+				<div class="panel-heading">Log in</div>
+				<div class="panel-body">
+					<form role="form">
+						<fieldset>
+							<div class="form-group">
+								<input class="form-control" placeholder="test" id = "register-email" name="register-email" type="email" autofocus="">
+							</div>
+							<div class="form-group">
+								<input class="form-control" placeholder="Password" id = "register-pwd" name="register-pwd" type="password" value="">
+							</div>
+							<div class="form-group">
+								<input class="form-control" placeholder="Username" id = "register-username" name="register-username" value="">
+							</div>
+							<div class="checkbox">
+								<label>
+									<input name="remember" type="checkbox" value="Remember Me">Remember Me
+								</label>
+							</div>
+								<button type="button" onclick = "login('login')">Login</button>
+								<button type="button" onclick = "signup('signup')" >Sign up</button>
+					</form>
+				</div>
+			</div>
+		</div><!-- /.col-->
+	</div><!-- /.row -->	
+	
+
+<script src="public/js/jquery-1.11.1.min.js"></script>
+<script src="public/js/amazon-cognito-identity.min.js"></script>
+	<script>
+	function login(id) {
+	
+	var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;    
+		var poolData = { UserPoolId : 'ap-southeast-1_LFIl6Lny1',
+        ClientId : '7pqubjs3pjjuhmueidce2t2qu4'
+		};
+		//var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);	 	
+	
+	var email = document.getElementById("email").value;
+	var pwd = document.getElementById("pwd").value;
+	
+	 var authenticationData = {
+        Username : email,
+        Password : pwd,
+    };
+    var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+    var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+    var userData = {
+        Username : email,
+        Pool : userPool
+    };
+	
+    var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+    cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: function (result) {
+            console.log('access token + ' + result.getAccessToken().getJwtToken());
+			
+			
+			
+            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+                IdentityPoolId : 'VitalSignUsers', // your identity pool id here
+                Logins : {
+                    // Change the key below according to the specific region your user pool is in.
+                    'cognito-idp.<ap-southeast-1>.amazonaws.com/<ap-southeast-1_LFIl6Lny1>' : result.getIdToken().getJwtToken()
+					
+                }
+            });
+			
+            //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+           
+        },
+
+        onFailure: function(error) {
+            //console.error(error);
+        },
+		customChallenge: (ChallengeParameters) => {
+                var challengeResponses = 'challenge-answer'
+                cognitoUser.sendCustomChallengeAnswer(challengeResponses, (err,result) => {
+		});
+}
+		});
+
+
+				cognitoUser.getSession(function(err, session) {
+            if (err) {
+                return;
+            }
+            console.log('session validity: ' + session.isValid());
+
+            // NOTE: getSession must be called to authenticate user before calling getUserAttributes
+            cognitoUser.getUserAttributes(function(err, attributes) {
+                if (err) {
+                    // Handle error
+                } else {
+                   cognitoUser.getUserAttributes(function(err, result) {
+				   
+				  
+					if (err) {
+					alert(err);
+					return;
+				}
+					
+				window.localStorage.setItem("subId", result[0].getValue());
+				window.sessionStorage.setItem("phone", result[3].getValue());
+				document.getElementById("login").style.display = "none";
+				window.location = "index.html"
+
+				for (i = 0; i < result.length; i++) {
+				console.log('attribute ' + result[i].getName() + ' has value ' + result[i].getValue());
+					}
+					
+					
+			
+				});
+			
+            }
+        
+		});
+
+    });
+	
+	
+	
+	
+}
+
+function signup(id){
+	var el = document.getElementById(id);
+	if(el && el.style){
+	el.style.display = el.style.display != 'none'? 'none' : '';
+	}
+	
+	var email = document.getElementById("register-email").value;
+	var pwd = document.getElementById("register-pwd").value;
+	var username = document.getElementById("register-username").value;
+	
+		var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;    
+		var poolData = { UserPoolId : 'ap-southeast-1_LFIl6Lny1',
+        ClientId : '7pqubjs3pjjuhmueidce2t2qu4'
+		};
+		var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);	 	
+			
+			var dataEmail = {
+			Name : 'email',
+			Value : email
+			};
+
+            var attributeEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
+            var attributeList = [];
+            
+            attributeList.push(attributeEmail);
+            var cognitoUser;
+
+            userPool.signUp(email, pwd, attributeList, null, function(err, result) {
+                if (err) {
+                    alert(err);
+                    return;
+                }
+                cognitoUser = result.user;
+            });
+			}
+	</script>
+	<script src="public/js/bootstrap.min.js"></script>
+</body>
+</html>

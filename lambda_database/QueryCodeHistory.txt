@@ -1,0 +1,38 @@
+"CREATE TABLE userVitalsTest( subId INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, heartrate VARCHAR(30) NOT NULL, resp VARCHAR(30) NOT NULL, dateCreated INT(30))"
+
+("INSERT INTO userVitalsTest (heartrate, resp, dateCreated)VALUES ("+testSubId+", '23',"+date+")"
+"SELECT * FROM userVitalsTest"
+
+CREATE TABLE userdata (
+  subId VARCHAR(50),
+  heartrate INT(10),
+  resp INT(10),
+  datecreated INT(200),
+  primary key (subId, datecreated)
+)
+
+"INSERT INTO userdata (subId, heartrate, resp, datecreated)VALUES ("+testSubId+", '66', '22',"+date+","+testSubId+dateString+" )"
+
+"CREATE TABLE userDataTest (subId VARCHAR(50),  heartrate INT(10),  resp INT(10),  dateCreated INT(200), dateEntered DATE NOT NULL,  primary key (subId, dateEntered))
+
+"INSERT INTO userdata (subId, heartrate, resp, dateCreated) VALUES ('"+testSubId+"', '58', '15','"+date+"')" CORRECTED
+
+"CREATE TABLE userdata (subId VARCHAR(50), heartRate INT(10),  respRate INT(10), bodyTemp INT(10), height INT(10), concLevel VARCHAR(10), oxySaturation INT(10), suppOxy VARCHAR(10), sysBP INT(10), weight INT(10),  dateCreated INT(200),  primary key (subId, dateCreated))"
+
+"INSERT into userdata (subId, heartRate, respRate, bodyTemp, height, concLevel, oxySaturation, suppOxy, sysBP, weight, dateCreated) VALUES('"+testSubId+"', '58', '15','37','190','Fine','95','No','127','95','"+date+"')"
+
+"SELECT * FROM userdata WHERE subId = '"+subId+"' LIMIT 5"
+
+"CREATE TABLE admindata (adminsubId VARCHAR(50), usersubId VARCHAR(50), address VARCHAR(100), DOB VARCHAR(50), email VARCHAR(100), familyName VARCHAR(50), gender VARCHAR(30), middleName VARCHAR(50), firstName VARCHAR(50), phoneNumber VARCHAR(50), city VARCHAR(50), suburb VARCHAR(50), dateLinked INT(200),  primary key (adminsubId, usersubId))"
+
+    const user_subId = bodyParams['user-subId'];
+    const admin_subId = bodyParams['admin-subId'];
+    const address = bodyParams['address'];
+    const city = bodyParams['city'];
+    const suburb = bodyParams['suburb'];
+    const email = bodyParams['email'];
+    const DOB = bodyParams['DOB'];
+    const familyName = bodyParams['familyName'];
+    const middleName = bodyParams['middleName'];
+    const firstName = bodyParams['firstName'];
+    const phoneNumber = bodyParams['phoneNumber'];

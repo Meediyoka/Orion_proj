@@ -1,0 +1,430 @@
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+body{
+	margin: 0;
+	padding: 0;
+	background: #fff;
+
+	color: #fff;
+	font-family: Arial;
+	font-size: 12px;
+}
+
+.body{
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	right: -40px;
+	bottom: -40px;
+	width: auto;
+	height: auto;
+	background-image: url(http://fulldesktopbackgrounds.com/wp-content/uploads/2017/09/Medical-Background-3.png);
+	background-size: cover;
+	-webkit-filter: blur(5px);
+	z-index: 0;
+}
+
+.grad{
+	position: absolute;
+	top: -20px;
+	left: -20px;
+	right: -40px;
+	bottom: -40px;
+	width: auto;
+	height: auto;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+	z-index: 1;
+	opacity: 0.7;
+}
+
+.header{
+	position: absolute;
+	top: calc(50% - 35px);
+	left: calc(45% - 255px);
+	z-index: 2;
+}
+
+.header div{
+	float: left;
+	color: #90a9fd;
+	font-family: 'Exo', sans-serif;
+	font-size: 50px;
+	font-weight: 400;
+}
+
+.header div span{
+	color: #5379fa !important;
+}
+
+.login{
+	position: absolute;
+	top: calc(50% - 75px);
+	left: calc(50% - 50px);
+	height: 150px;
+	width: 350px;
+	padding: 10px;
+	z-index: 2;
+}
+
+.login input[type=text]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	padding: 4px;
+}
+
+.login input[type=password]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+
+.login input[type=button]{
+	width: 260px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #020201;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+
+
+.login input[type=button]:hover{
+	opacity: 0.8;
+}
+
+.login input[type=button]:active{
+	opacity: 0.6;
+}
+
+.login input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=button]:focus{
+	outline: none;
+}
+.register{
+	display: none;
+	position: absolute;
+	top: calc(15% - 75px);
+	left: calc(50% - 50px);
+	height: 150px;
+	width: 375px;
+	padding: 10px;
+	z-index: 2;
+}
+
+.register input[type=name]{
+	width: 270px;
+	height: 30px;
+	background: #152635a3;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 10px;
+	
+}
+.register input[type=address]{
+	width: 270px;
+	height: 30px;
+	background: #152635a3;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 10px;
+		
+}
+.register input[type=text]{
+	width: 270px;
+	height: 30px;
+	background: #152635a3;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 10px;
+	margin-top: 10px;
+	
+}
+.register input[type=dob]{
+	width: 270px;
+	height: 30px;
+	background: #152635a3;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px
+	
+}
+.register input[type=m-contact]{
+	width: 270px;
+	height: 30px;
+	background: #152635a3;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 10px;
+	margin-top: 10px;
+	
+}
+.register input[type=h-contact]{
+	width: 270px;
+	height: 30px;
+	background: #152635a3;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 10px;
+	
+}
+.register input[type=gender]{
+	position: absolute;
+	width: 270px;
+	height: 30px;
+	background: #152635a3;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 10px;
+	margin-left: 10px;
+	margin-top: 10px;
+	margin-bottom: -10px;
+	
+}
+.register input[type=admin-form]{
+	position: absolute;
+	width: 270px;
+	height: 30px;
+	background: #152635a3;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 10px;
+	margin-left: 10px;
+	margin-bottom: -10px;
+	
+}
+
+.register input[type=password]{
+	width: 270px;
+	height: 30px;
+	background: #152635a3;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: -10px;
+}
+.register input[type=c-password]{
+	width: 270px;
+	height: 30px;
+	background: #152635a3;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 10px;
+}
+
+.register input[type=button]{
+	width: 290px;
+	height: 45px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: ##020201;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 20px;
+}
+
+.register input[id = button2]{
+	width: 260px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 20px;
+}
+
+.register input[type=button]:hover{
+	opacity: 0.8;
+}
+
+.register input[type=button]:active{
+	opacity: 0.6;
+}
+
+.register input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.register input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.register input[type=button]:focus{
+	outline: none;
+}
+
+::-webkit-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+
+::-moz-input-placeholder{
+   color: rgba(255,255,255,0.6);
+}
+
+.h1{
+	float: left;
+	color: #90a9fd;
+	font-family: 'Exo', sans-serif;
+	font-size: 40px;
+	font-weight: 400;
+}
+
+.header_select{
+	    position: absolute; /* Set your desired with */
+        z-index: 2; /* Make sure its above other items. */
+		width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+        margin-top: auto; /* Changes with height. */
+     
+		
+        padding: 10px;
+}
+
+.register_select{
+  display: none;
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+}
+
+.register_select input[id = button2]{
+	width: 230px;
+	height: 35px;
+	background: #fff;
+	margin-left: auto;
+		margin-right: auto;
+        margin-top: auto;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: black;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 20px;
+}
+
+.register_select input[type=button]:hover{
+	opacity: 0.8;
+}
+
+.register_select input[type=button]:active{
+	opacity: 0.6;
+}
+
+.register_select input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.register_select input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.register_select input[type=button]:focus{
+	outline: none;
+}
+
+.nav{
+    margin-top:167px;
+    width:1024px;
+    height:34px;
+}
+
+.nav_button{
+    height:34px;
+    margin:0 auto;
+    margin-right:10px;
+    float:left;
+}

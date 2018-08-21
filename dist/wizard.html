@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>EWS Calculator</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+	
+    </head>
+
+	
+    <body>
+
+		<!-- Top menu -->
+		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="top-navbar-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<span class="li-text">
+								Return 
+							</span> 
+							<a href="#"><strong>Home</strong></a> 
+							<span class="li-text">
+							</span> 
+							<span class="li-social">
+								<a href="index.html" target="_blank"><i class="fa fa-heartbeat"></i></a>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+        <!-- Top content -->
+        <div class="top-content">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                  
+                        <div class="description">
+                       	
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
+                    	<form role="form" id = "submitForm" class="f1">
+
+                    		<h2>EWS Calculator</h2>
+                    		<p>Remember to record vital information as accurately as possible!</p>
+                    		<div class="f1-steps">
+                    			<div class="f1-progress">
+                    			    <div class="f1-progress-line" data-now-value="7.142857142857143" data-number-of-steps="7" style="width: 7.142857142857143%;"></div>
+                    			</div>
+                    			<div class="f1-step active">
+                    				<div class="f1-step-icon"><i class="fa fa-heartbeat"></i></div>
+                    				<p>Heart & Respiratory rate</p>
+                    			</div>
+                    			<div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-adjust"></i></div>
+                    				<p>Oxygen Saturation</p>
+                    			</div>
+								<div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-fire"></i></div>
+                    				<p>Temperature</p>
+                    			</div>
+                    		    <div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-tint"></i></div>
+                    				<p>Systolic Blood Pressure</p>
+                    			</div>
+								<div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-child"></i></div>
+                    				<p>Weight & Height</p>
+                    			</div>
+								<div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-plus"></i></div>
+                    				<p>Supplemental Oxygen</p>
+                    			</div>
+								<div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-eye"></i></div>
+                    				<p>Level of Conciousness</p>
+                    			</div>
+								
+                    		</div>
+                    		<input id="prodId" name="subId" type="hidden">
+                    		<fieldset>
+					
+                    		    <h4>Please enter your Heart and Respiratory Rate</h4>
+                    			<div class="form-group">
+                    			    <label class="sr-only" for="f1-first-name">Heart & Respiratory</label>
+                                    <input type="text" placeholder="Heartrate (Beats Per Minute)" name= "heart" class="f1-first-name form-control" id="heart" autocomplete="off">
+									<input type="text" placeholder="Respiratory Rate (Breaths Per Minute)" name = "resp" class="f1-first-name form-control" id="resp" autocomplete="off">
+
+                                </div>   
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                    		    <h4>Please enter your Oxygen Saturation levels</h4>
+                    			<div class="form-group">
+                    			    <label class="sr-only" for="f1-first-name">Oxygen Saturation</label>
+                                    <input type="text" placeholder="Oxygen Saturation (%)" class="f1-first-name form-control" name = "sp02" id="sp02"autocomplete="off">
+                                </div>   
+                                <div class="f1-buttons">
+									<button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                    		    <h4>Temperature</h4>
+                    			<div class="form-group">
+                    			    <label class="sr-only" for="f1-first-name"></label>
+                                    <input type="text" placeholder="Temperature (Celsius)" class="f1-first-name form-control" name = "bodyTemp" id="temp"autocomplete="off">
+                                </div>   
+                                <div class="f1-buttons">
+									<button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+							
+							<fieldset>
+                    		    <h4>Systolic Blood Pressure</h4>
+                    			<div class="form-group">
+                    			    <label class="sr-only" for="f1-first-name">Systolic Blood Pressure</label>
+                                    <input type="text"  placeholder="Systolic Blood Pressure (mmHg)" class="f1-first-name form-control" id="sys-bp" name = "sys-bp" autocomplete="off">
+                                </div>   
+                                <div class="f1-buttons">
+									<button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+                            
+							<fieldset>
+                    		    <h4>Height & Weight:</h4>
+                    			<div class="form-group">
+                    			    <label class="sr-only" for="f1-first-name"></label>
+									<input type="text" placeholder="Height (cm)" class="f1-first-name form-control" id="height" name = "height" autocomplete="off">
+									<input type="text" placeholder="Weight (kg)" class="f1-first-name form-control" id="weight" name = "weight" autocomplete="off">
+                                </div>   
+                                <div class="f1-buttons">
+									<button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+						
+							<fieldset>
+                                <h4>Are you currently on Supplemental Oxygen</h4>
+                                <div class="form-group">
+                                    <label class="sr-only" for="f1-email">Supplemental Oxygen</label>
+                                    <input type="text" placeholder="Yes/No" class="f1-email form-control" id="supp-02" name = "supp-02" autocomplete="off">
+                                </div>
+                               
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+							<fieldset>
+                                <h4>Level of Consciousness</h4>
+                                <div class="form-group">
+                                    <label class="sr-only" for="f1-email"></label>
+                                    <input type="text" placeholder="Weak/Fine" class="f1-email form-control" name = "conc" id="conc" autocomplete = "off">
+                                </div>
+                               
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="submit" class="btn btn-submit" action = "submit()">Submit</button>
+                                </div>
+                            </fieldset>
+                    	
+                    	</form>
+                    </div>
+                </div>
+                    
+            </div>
+        </div>
+
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/retina-1.1.0.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+	<script>
+	window.onload = function subId(){
+	var subId = window.localStorage.getItem("subId");
+	console.log(subId);
+	
+	document.getElementById("prodId").value = subId;
+	
+};
+
+$("#submitForm").submit(function(e) {
+
+    var url = "https://b1yqg3yfb0.execute-api.ap-southeast-1.amazonaws.com/deploy/mysqlinsert"; // Lambda function writing into database
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: $("#submitForm").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+               alert(data); // show response from the php script.
+           }
+         });
+
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+});
+
+		</script>
+	
+</html>

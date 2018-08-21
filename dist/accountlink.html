@@ -1,0 +1,192 @@
+<html><head>
+<script>
+ //if(window.localStorage.getItem("CognitoIdentityServiceProvider.6ais15gj1a5fnqn8t9o9ruvta6.LastAuthUser") == null) { // THIS IS A SECURITY PROBLEM, VERY EASY TO BYPASS THIS
+      //   window.location.replace("login.html");
+         //window.location.href = "http://localhost/login.html";
+         //$(location).attr('href', 'http://localhost/login.html');
+    //    }
+</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dashboard</title>
+	<link href="public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="public/css/font-awesome.min.css" rel="stylesheet">
+	<link href="public/css/datepicker3.css" rel="stylesheet">
+	<link href="public/css/bootstrap-table.css" rel="stylesheet">
+	<link href="public/css/styles.css" rel="stylesheet">
+	</head>
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span></button>
+				<a class="navbar-brand" href="#"><span>Vital</span>Signs</a>
+				<ul class="nav navbar-top-links navbar-right">
+					
+					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+						<em class="fa fa-power-off"></em><span class="label label-info"></span>
+					</a>
+					<ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar collapse in" aria-expanded="true" style="">
+		<div class="profile-sidebar">
+			<div class="profile-userpic">
+				<!-- /.SPACE FOR USER PICTURE -->
+			</div>
+			<div class="profile-usertitle">
+				<div class="profile-usertitle-name"><p style="font-size:12px" id="username"> </p></div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="divider"></div>
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+			<li><a href="wizard.html"><em class="fa fa-bar-chart">&nbsp;</em> EWS Test </a></li>
+			<li class="parent"><a data-toggle="collapse" href="#sub-item-1">
+				<em class="fa fa-navicon">&nbsp;</em> Account <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				</a>
+				<ul class="children collapse" id="sub-item-1">
+					<li><a class="" href="#">
+						<span class="fa fa-arrow-right">&nbsp;</span> Account Details
+					</a></li>
+					<li  class="active"><a class="" href="#">
+						<span class="fa fa-arrow-right">&nbsp;</span> Link Account
+					</a></li>
+					<li><a class="" href="#">
+						<span class="fa fa-arrow-right">&nbsp;</span> Reset Password
+					</a></li>
+				</ul>
+			</li>
+			<li><a href = "login.html" onclick = "logoutFunction()"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+		</ul>
+		<input id="prodId" name="getId" type="hidden">
+	</div>
+	<!--/.sidebar-->
+	
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">Account/Link Account</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header"></h1>
+			</div>
+		</div><!--/.row-->
+		
+<div class="col-lg-6">		
+
+	<div class="panel panel-default">
+						<div class="panel-heading">Link Account</div>
+						<div class="panel-body btn-margins">
+							<div class="col-md-12">
+								<div class="form-group" id = "formClass">
+									<label id = "test">Please enter the code you have been provided</label>
+									<input class="form-control" placeholder="Valid Code" id = "codeForm"> 
+									<button type="submit" class="btn btn-primary" onclick = 'linkAccount()' style = "margin-top: 10px">Link</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+
+
+
+	</div>	<!--/.main-->
+	
+	<script src="public/js/jquery-1.11.1.min.js"></script>
+	<script src="public/js/bootstrap.min.js"></script>
+	<script src="public/js/chart.min.js"></script>
+	<script src="public/js/easypiechart.js"></script>
+	<script src="public/js/easypiechart-data.js"></script>
+	<script src="public/js/bootstrap-datepicker.js"></script>
+	<script src="public/js/custom.js"></script>
+	<script src="public/js/chart-data.js"></script>
+	<script src="public/js/amazon-cognito-identity.min.js"></script>
+	<script src="public/js/bootstrap-table.js"></script>
+	<script>
+	function linkAccount(){
+	var adminSubId =  document.getElementById("codeForm").value; 
+	
+	var accessKey = window.sessionStorage.getItem("accessKeyId");
+	var email = window.localStorage.getItem("CognitoIdentityServiceProvider.4q10i2gsdggtc8452s0ogvdp82.LastAuthUser");
+	//var address = window.localStorage.getItem("att_address");												// To be accessed through a second login attempt. Local storage for testing purpose only and will be redacted in complete handover
+	//var dob = window.localStorage.getItem("att_dob");
+	//var gender = window.localStorage.getItem("att_gender");
+	//var homephone = window.localStorage.getItem("att_homephone");
+	//var firstname = window.localStorage.getItem("att_name");
+	//var lastname = window.localStorage.getItem("att_lastname");
+	//var middlename = window.localStorage.getItem("att_middlename");
+	//var mobile = window.localStorage.getItem("att_mobile");
+	//var suburb = window.localStorage.getItem("att_suburb");
+	//var city = window.localStorage.getItem("att_city");
+	//var userSubId = window.localStorage.getItem("subId");
+
+	
+	document.getElementById("username").innerHTML = email;
+	
+	$.ajax({
+    type: 'POST',
+    url: 'https://9y88muwplf.execute-api.ap-southeast-1.amazonaws.com/deployLink/',
+	async: false,
+    data: {"user-subId": userSubId,
+		   "admin-subId": adminSubId,
+		   "address": address,
+		   "city": city,
+		   "gender": gender,
+		   "suburb": suburb,
+		   "email": email,
+		   "DOB": dob,
+		   "familyName": lastname,
+		   "middleName": middlename,
+		   "firstName": firstname,
+		   "phoneNumber": mobile},
+		   
+    contentType: "application/x-www-form-urlencoded",
+        success: function (text) { 
+		
+            console.log(text);
+	  }
+});
+
+	}		
+	function logoutFunction(){
+		sessionStorage.clear();
+		localStorage.clear();
+	}	
+		
+	
+	</script>
+	
+
+
+	
+		
+
+</body></html>

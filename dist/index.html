@@ -1,0 +1,1214 @@
+<html><head>
+<script>
+	//if(window.localStorage.getItem("CognitoIdentityServiceProvider.4q10i2gsdggtc8452s0ogvdp82.LastAuthUser") == null) {	
+     //    window.location.replace("loginuser.html");
+     //  window.location.href = "http://localhost/loginuser.html";
+     //  $(location).attr('href', 'http://localhost/loginuser.html');
+     // }
+	//else if(window.localStorage.getItem("CognitoIdentityServiceProvider.4q10i2gsdggtc8452s0ogvdp82.LastAuthUser") != null){		
+	//	window.location.replace("index.html");
+	//}
+		
+	//   if(window.localStorage.getItem("CognitoIdentityServiceProvider.6ais15gj1a5fnqn8t9o9ruvta6.LastAuthUser") != null) {
+	//       window.location.replace("admin.html");
+	//	 console.log("testesT");
+         //window.location.href = "http://localhost/login.html";
+         //$(location).attr('href', 'http://localhost/login.html');
+   //   }
+</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dashboard</title>
+	<link href="public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="public/css/font-awesome.min.css" rel="stylesheet">
+	<link href="public/css/datepicker3.css" rel="stylesheet">
+	<link href="public/css/styles.css" rel="stylesheet">
+	</head>
+	<!--Custom Font-->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span></button>
+				<a class="navbar-brand" href="#"><span>Vital</span>Signs</a>
+				<ul class="nav navbar-top-links navbar-right">
+					
+					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+						<em class="fa fa-power-off"></em><span class="label label-info"></span>
+					</a>
+					<ul>
+					</li>
+				</ul>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar collapse in" aria-expanded="true" style="">
+		<div class="profile-sidebar">
+			<div class="profile-userpic">
+				<!-- /.SPACE FOR USER PICTURE -->
+			</div>
+			<div class="profile-usertitle">
+				<div class="profile-usertitle-name"><p style="font-size:12px" id="username"> </p></div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="divider"></div>
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li class="active"><a href="index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
+			<li><a href="wizard.html"><em class="fa fa-bar-chart">&nbsp;</em> EWS Test </a></li>
+			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+				<em class="fa fa-navicon">&nbsp;</em> Account <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				</a>
+				<ul class="children collapse" id="sub-item-1">
+					<li><a class="" href="#">
+						<span class="fa fa-arrow-right">&nbsp;</span> Account Details
+					</a></li>
+					<li><a class="" href="accountlink.html">
+						<span class="fa fa-arrow-right">&nbsp;</span> Link Account
+					</a></li>
+					<li><a class="" href="#">
+						<span class="fa fa-arrow-right">&nbsp;</span> Reset Password
+					</a></li>
+				</ul>
+			</li>
+			<li><a href = "loginuser.html" onclick = "logoutFunction()"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+		</ul>
+		<input id="prodId" name="getId" type="hidden">
+	</div>
+	<!--/.sidebar-->
+	
+		
+	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+		<div class="row">
+			<ol class="breadcrumb">
+				<li><a href="#">
+					<em class="fa fa-home"></em>
+				</a></li>
+				<li class="active">Dashboard</li>
+			</ol>
+		</div><!--/.row-->
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Dashboard</h1>
+			</div>
+		</div><!--/.row-->
+		
+		
+		
+		<div class="panel panel-container">
+			<div class="row">
+				
+	<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-heartbeat color-grey" id = "em-heart-logo"></em>
+						<div class="placeholder" id = "placeholder0">
+								<div class="rect1"></div>
+								<div class="rect2"></div>
+								<div class="rect3"></div>
+								<div class="rect4"></div>
+								<div class="rect5"></div>
+						</div>
+							<div class="large"><div class = "animate-l"><a target="_blank" href = '#' class = "no-underline" id = "heartlink"><p id="heart"></p></a></div></div>
+							<div class="text-muted" style="color:grey" id="em-heart-text">Heartrate (BPM)</div>
+						</div>
+					</div>
+				</div>
+	<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-plus-square color-grey" id = "em-resp-logo"></em>
+						<div class="placeholder" id = "placeholder1">
+								<div class="rect1"></div>
+								<div class="rect2"></div>
+								<div class="rect3"></div>
+								<div class="rect4"></div>
+								<div class="rect5"></div>
+						</div>
+							<div class="large"><div class = "animate-l"<p id="resp"> </p></div></div>
+							<div class="text-muted" style="color:grey" id = "em-resp-text">Respiratory Rate</div>
+						</div>
+					</div>
+				</div>
+	<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-thermometer-three-quarters color-grey"  id = "em-temp-logo"></em>
+						<div class="placeholder" id = "placeholder2">
+								<div class="rect1"></div>
+								<div class="rect2"></div>
+								<div class="rect3"></div>
+								<div class="rect4"></div>
+								<div class="rect5"></div>
+						</div>
+							<div class="large"><p id="temp"></div>
+							<div class="text-muted" style="color:grey" id = "em-temp-text">Temperature</div>
+						</div>
+					</div>
+				</div>
+	<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-tachometer color-red"></em>
+						<div class="placeholder" id = "placeholder3">
+								<div class="rect1"></div>
+								<div class="rect2"></div>
+								<div class="rect3"></div>
+								<div class="rect4"></div>
+								<div class="rect5"></div>
+						</div>
+							<div class="large"><p id="weight"></div>
+							<div class="text-muted" style="color: red">Weight</div>
+						</div>
+					</div>
+				</div><div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-teal panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-child color-grey" id = "em-sp02-logo"></em>
+						<div class="placeholder" id = "placeholder4">
+								<div class="rect1"></div>
+								<div class="rect2"></div>
+								<div class="rect3"></div>
+								<div class="rect4"></div>
+								<div class="rect5"></div>
+						</div>
+							<div class="large"><p id="oxySaturation"></div>
+							<div class="text-muted" style="color:grey" id = "em-sp02-text">Oxygen Saturation</div>
+				
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-blue panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-heart color-grey" id = "em-sysBP-logo"></em>
+						<div class="placeholder" id = "placeholder5">
+								<div class="rect1"></div>
+								<div class="rect2"></div>
+								<div class="rect3"></div>
+								<div class="rect4"></div>
+								<div class="rect5"></div>
+						</div>
+							<div class="large"><p id="sysBP"></div>
+							<div class="text-muted" style="color:grey" id = "em-sysBP-text">Systolic Blood Pressure</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-orange panel-widget border-right">
+						<div class="row no-padding"><em class="fa fa-xl fa-plus color-orange"></em>
+						<div class="placeholder" id = "placeholder6">
+								<div class="rect1"></div>
+								<div class="rect2"></div>
+								<div class="rect3"></div>
+								<div class="rect4"></div>
+								<div class="rect5"></div>
+						</div>
+							<div class="large"><p id="supp02"></div>
+							<div class="text-muted" style="color:orange">Supplementary O2</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3 col-lg-3 no-padding">
+					<div class="panel panel-red panel-widget ">
+						<div class="row no-padding"><em class="fa fa-xl fa-eye color-green" id = "em-conc-logo"></em>
+						<div class="placeholder" id = "placeholder7">
+								<div class="rect1"></div>
+								<div class="rect2"></div>
+								<div class="rect3"></div>
+								<div class="rect4"></div>
+								<div class="rect5"></div>
+						</div>
+							<div class="large"><p id="conc"></div>
+							<div class="text-muted" style="color:green" id = "em-conc-text">Level Of Conciousness</div>
+						</div>
+					</div>
+				</div>
+			</div><!--/.row-->
+		</div>
+		
+		
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+					<div class="chart-placeholder" id = "chart-placeholder">
+					</div>
+					<ul class="pull-right panel-settings panel-button-tab-right">
+							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" >
+								<em class="fa fa-cogs"></em>
+							</a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li>
+										<ul class="dropdown-settings">
+											<li><a href="javascript:void(0)" onclick="lineFunction('heartrate')">
+												<em class="fa fa-cog"></em> Heartrate
+											</a></li>
+											<li class="divider"></li>
+											<li><a href="javascript:void(0)" onclick="lineFunction('respiratory')">
+												<em class="fa fa-cog"></em> Respiratory
+											</a></li>
+											<li class="divider" ></li>
+											<li><a href="javascript:void(0)" onclick="lineFunction('temp')">
+												<em class="fa fa-cog"></em> Temperature
+											</a></li>
+											<li class="divider" ></li>
+											<li><a href="javascript:void(0)" onclick="lineFunction('weight')">
+												<em class="fa fa-cog"></em> Weight
+											</a></li>
+											<li class="divider" ></li>
+											<li><a href="javascript:void(0)" onclick="lineFunction('sysBP')">
+												<em class="fa fa-cog"></em> Systolic Blood Pressure
+											</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>	
+					<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+					
+					<div class="panel-body">
+						<div class="canvas-wrapper" id = "canvas-wrapper">
+							<canvas class="main-chart" id="bar-chart" height="200" width="600">
+							
+							</canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->	
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						EWS Score
+						</div>
+					<div class="panel-body" style="display: block;">
+						<div class="panel panel-teal panel-widget border-right">
+					</div>
+
+		<div class="large" style="text-align: center">
+			Your Total EWS Score was
+		</div>
+		<div class="large2" style="text-align: center;  color:grey; font-size:100px" id = "totalEWS">0</div>
+		<div class="panel panel-teal panel-widget border-right">
+		</div>
+		<div class="large2" style="text-align: center">Heartrate</div><div class="large2" style="text-align: center;  color:grey; font-size:30px" id = "heart-ews">0</div>
+		<div class="large2" style="text-align: center">Respiratory Rate</div><div class="large" style="text-align: center;  color:grey; font-size:30px" id = "resp-ews">0</div>
+		<div class="large2" style="text-align: center">Temperature</div><div class="large" style="text-align: center;  color:grey; font-size:30px" id = "temp-ews">0</div>
+		<div class="large2" style="text-align: center">Weight</div><div class="large" style="text-align: center;  color:grey; font-size:30px" >0</div>
+		<div class="large2" style="text-align: center">Sytystolic Blood Pressure</div><div class="large" style="text-align: center;  color:grey; font-size:30px" id = "sysBP-ews">0</div>
+		<div class="large2" style="text-align: center">Oxygen Saturation</div><div class="large" style="text-align: center;  color:grey; font-size:30px" id = "sp02-ews">0</div>
+		<div class="large2" style="text-align: center">Level Of Conciousness</div><div class="large" style="text-align: center;  color:grey; font-size:30px" id = "conc-ews">0</div>
+
+<div class2="panel panel-teal panel-widget border-right">
+</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+			<div class="panel panel-default articles">
+					<div class="panel-heading">
+						Recent Activity
+						<ul class="pull-right panel-settings panel-button-tab-right">
+							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+								<em class="fa fa-cogs"></em>
+							</a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li>
+										<ul class="dropdown-settings">
+											<li><a href="#">
+												<em class="fa fa-cog"></em> Settings 1
+											</a></li>
+											<li class="divider"></li>
+											<li><a href="#">
+												<em class="fa fa-cog"></em> Settings 2
+											</a></li>
+											<li class="divider"></li>
+											<li><a href="#">
+												<em class="fa fa-cog"></em> Settings 3
+											</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+					<div class="panel-body articles-container">
+						<div class="article border-bottom">
+							<div class="col-xs-12">
+								<div class="row">
+									<div class="col-xs-2 col-md-2 date">
+										<div class="large">17</div>
+										<div class="text-muted">May</div>
+									</div>
+									<div class="col-xs-10 col-md-10">
+										<h4><a href="#">You Logged Vitals</a></h4>
+										<p>Your overall EWS Score was nominal.</p>
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div><!--End .article-->
+						
+						<div class="article border-bottom">
+							<div class="col-xs-12">
+								<div class="row">
+									<div class="col-xs-2 col-md-2 date">
+										<div class="large">12</div>
+										<div class="text-muted">May</div>
+									</div>
+									<div class="col-xs-10 col-md-10">
+										<h4><a href="#">You Logged Vitals </a></h4>
+										<p>Your EWS score had several warnings</p>
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div><!--End .article-->
+						
+						<div class="article">
+							<div class="col-xs-12">
+								<div class="row">
+									<div class="col-xs-2 col-md-2 date">
+										<div class="large">10</div>
+										<div class="text-muted">May</div>
+									</div>
+									<div class="col-xs-10 col-md-10">
+										<h4><a href="#">You signed up!</a></h4>
+										<p>You created an account</p>
+									</div>
+								</div>
+							</div>
+							<div class="clear"></div>
+						</div><!--End .article-->
+					</div>
+				</div>
+				
+				<div class="panel panel-default ">
+					<div class="panel-heading">
+						Score Distribution
+						<ul class="pull-right panel-settings panel-button-tab-right">
+							<li class="dropdown"><a class="pull-right dropdown-toggle" data-toggle="dropdown" href="#">
+								<em class="fa fa-cogs"></em>
+							</a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li>
+										<ul class="dropdown-settings">
+											<li><a href="#">
+												<em class="fa fa-cog"></em> Settings 1
+											</a></li>
+											<li class="divider"></li>
+											<li><a href="#">
+												<em class="fa fa-cog"></em> Settings 2
+											</a></li>
+											<li class="divider"></li>
+											<li><a href="#">
+												<em class="fa fa-cog"></em> Settings 3
+											</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span></div>
+					<div class="panel-body">
+						<div class="col-md-12 no-padding">
+							<div class="row progress-labels">
+								<div class="col-sm-6">Healthy Scores</div>
+								<div class="col-sm-6" style="text-align: right;" id = "green-bar-text">0%</div>
+							</div>
+							<div class="progress">
+								<div id = "green-bar" data-percentage="0%" style="width: 0%;" class="progress-bar progress-bar-green" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+							</div>
+							<div class="row progress-labels">
+								<div class="col-sm-6">Warning Scores</div>
+								<div class="col-sm-6" style="text-align: right;" id = "orange-bar-text">0%</div>
+							</div>
+							<div class="progress">
+								<div id = "orange-bar" data-percentage="0%" style="width: 0%;" class="progress-bar progress-bar-orange" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+							</div>
+							<div class="row progress-labels">
+								<div class="col-sm-6">Danger Scores</div>
+								<div class="col-sm-6" style="text-align: right;" id = "red-bar-text">0%</div>
+							</div>
+							<div class="progress">
+								<div id = "red-bar" data-percentage="0%" style="width: 0%;" class="progress-bar progress-bar-red" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div><!--/.col-->
+			
+<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading" style="color yellow">Recommendation</div>
+					<div class="panel-body" style="display: block;">
+						
+<div class="large" style="text-align: center">Manage pain, fever or distress. Increase frequency of vital sign monitoring.</div>
+		
+    </div></div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-info">
+					<div class="panel-heading" id = "safe-zone">Safe Zone</div>
+					<div class="panel-body">
+						<p></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="panel panel-warning">
+					<div class="panel-heading" id = "warning-zone">Warning Zone</div>
+					<div class="panel-body">
+						<p></p>
+					</div>
+				</div>
+			</div>
+				<div class="col-md-4">
+				<div class="panel panel-danger">
+					<div class="panel-heading" id = "danger-zone">Danger Zone</div>
+					<div class="panel-body">
+						<p></p>
+					</div>
+				</div>
+			</div>
+	</div>
+		
+		</div><!--/.row-->
+		
+		<!--/.row-->
+		
+		<div class="row">
+			<!--/.col-->
+			
+			
+			<!--/.col-->
+			
+		</div><!--/.row-->
+	</div>	<!--/.main-->
+	
+	<script src="public/js/jquery-1.11.1.min.js"></script>
+	<script src="public/js/bootstrap.min.js"></script>
+	<script src="public/js/chart.min.js"></script>
+	<script src="public/js/easypiechart.js"></script>
+	<script src="public/js/easypiechart-data.js"></script>
+	<script src="public/js/bootstrap-datepicker.js"></script>
+	<script src="public/js/custom.js"></script>
+	<script src="public/js/chart-data.js"></script>
+	<script>
+	
+	</script>
+	<script>
+	window.onload = function getId(){
+	var subId = window.localStorage.getItem("subId");
+	var date = Date.now();
+	console.log(subId);
+	console.log(date);
+	
+
+
+$.ajax({
+    type: 'POST',
+    url: 'https://b1yqg3yfb0.execute-api.ap-southeast-1.amazonaws.com/deploy',			//URL of Lambda Function
+	async: false,
+    data: {"subId": subId},																//Value of unique user key passed for lambda functions query parameter
+    contentType: "application/x-www-form-urlencoded",									//Format of the body parsed to the function in which parameters are retrieved
+        success: function (text) { 														//If success //text = returned data from function response
+		
+            
+			var out = JSON.stringify(text);												//Format response text values into usable JSON format.
+			console.log(out);
+			var str = out + '';															
+			console.log(str);
+			var arr = str.split('"');													//Split string values at " instances to generate usable array
+			console.log(arr);
+			result = arr;  
+	  }
+});
+
+			console.log(result[3]);														//Standard test of index 3
+			
+			for(var i = 0; i < result.length; i++)
+			{
+				result[i] = result[i].replace(/[{()}:\\\] ,"]/g, "");					//Iterates through each array based on array size and replaces unwanted instances of characters with an empty character
+			}
+			
+			//Commented lines for testing purposes
+			
+			heartrate = result[10];														//array pointing to returned heartrate vital
+		    //heartrate = 39;
+			respiratory = result[12];													//array pointing to returned respiratory vital
+			//respiratory = 8;
+			supp02 = result[25];														//array pointing to returned supplemental oxygen vital
+			weight = result[30];														//array pointing to returned weight vital
+			oxySaturation = result[22];													//array pointing to returned oxygen saturation vital
+			height = result[16];														//array pointing to returned height value
+			//temperature = 40;
+			temperature = result[14];													//array pointing to returned temperature vital
+			conc = result[19];															//array pointing to returned conciousness vital
+			sysBP = result[28];															//array pointing to returned systolic blood pressure vital
+			
+			
+			convertDate = new Date(result[32]).toString();								//standard function of converting date generated through mysql to a user friendly readable date
+			console.log(convertDate);
+			
+			document.getElementById("heart").innerHTML = heartrate;
+			
+			if(respiratory == 0){														//Functionality for skipped values (values skipped are stored in the database as 0)
+				document.getElementById("resp").innerHTML = "-";						//If value is 0 then the display is updated with the dash character instead of a value
+			}
+			else{
+				document.getElementById("resp").innerHTML = respiratory;
+			}
+			document.getElementById("oxySaturation").innerHTML = oxySaturation;
+			document.getElementById("temp").innerHTML = temperature;
+			document.getElementById("weight").innerHTML = weight;
+			document.getElementById("conc").innerHTML = conc;
+			document.getElementById("supp02").innerHTML = supp02;
+			document.getElementById("sysBP").innerHTML = sysBP;
+			
+		for(i = 0; i < 8; i++){															//For loop that ensures all spinners are loaded and unloaded correctly when values populate
+			
+			var placeholderVar = "placeholder"+parseInt(i);
+			var x = document.getElementById(placeholderVar);
+			console.log(placeholderVar);
+			
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+		
+			heartEWS = 0;																//Global decleration of overall score values for future use
+			respEWS = 0;
+			tempEWS = 0;
+			sysBPEWS = 0;
+			concEWS = 0;
+			
+			//HEARTRATE
+			if(heartrate <= 40 || heartrate >= 130){									//Conditions based on the EWS chart. EG. if heartrate is less than or equal to 40
+																						// OR if heartrate is greater than or equal to 130 => do something
+				heartEWS = 3;															// Score assigned if conditions of returned value match the containing if statement
+				document.getElementById("em-heart-logo").style.color = "red";			// Grabs the logo element and updates its style to red
+				document.getElementById("em-heart-text").style.color = "red";			// Grabs the text element and updates its style to red
+				document.getElementById("heart-ews").innerHTML = heartEWS;				// Updates the individual score for heartrate with heartEWS. In this case it is 3.
+				document.getElementById("heart-ews").style.color = "red";				// Updates the individual score to be red.
+				document.getElementById("danger-zone").innerHTML = "Heartrate";			// Updates the danger zone to display heartrate
+		
+				document.getElementById("heartlink").href="https://www.mayoclinic.org/healthy-lifestyle/fitness/expert-answers/heart-rate/faq-20057979";  //Allows the heartrate displayed value to be clicked and navigate to 
+																																						  // Mayoclinic with appropriate information
+			}
+			else if(heartrate >= 41 && heartrate <= 50){													
+				heartEWS = 2;
+				document.getElementById("em-heart-logo").style.color = "#ea7711";		//Conditions of color applied where appropriate based on EWS score
+				document.getElementById("em-heart-text").style.color = "#ea7711";
+				document.getElementById("heart-ews").innerHTML = heartEWS;
+				document.getElementById("heart-ews").style.color = "#ea7711";
+			}
+			else if(heartrate >= 51 && heartrate <= 100){								// This is a healthy range, therefore values are updated to reflect this.
+				heartEWS = 0;
+				document.getElementById("em-heart-logo").style.color = "green";
+				document.getElementById("em-heart-text").style.color = "green";
+				document.getElementById("heart-ews").innerHTML = heartEWS;
+				document.getElementById("heart-ews").style.color = "green";
+			}
+			else if(heartrate >= 101 && heartrate <= 110){
+				heartEWS = 1;
+				document.getElementById("em-heart-logo").style.color = "orange";
+				document.getElementById("em-heart-text").style.color = "orange";
+				document.getElementById("heart-ews").innerHTML = heartEWS;
+				document.getElementById("heart-ews").style.color = "orange";
+			}
+			else if(heartrate >= 111 && heartrate <= 129){
+				heartEWS = 2;
+				document.getElementById("em-heart-logo").style.color = "#ea7711";
+				document.getElementById("em-heart-text").style.color = "#ea7711";
+				document.getElementById("heart-ews").innerHTML = heartEWS;
+				document.getElementById("heart-ews").style.color = "#ea7711";
+			}
+			
+			//RESPIRATORY
+			
+			if(respiratory == 0){
+				respEWS = 0;
+				document.getElementById("em-resp-logo").style.color = "grey";
+				document.getElementById("em-resp-text").style.color = "grey";
+				document.getElementById("resp-ews").innerHTML = "Skipped";
+				document.getElementById("resp-ews").style.color = "grey";
+				
+			}
+			
+			else if(respiratory <= 8 || respiratory >= 30){
+			
+				respEWS = 3;
+				document.getElementById("em-resp-logo").style.color = "red";
+				document.getElementById("em-resp-text").style.color = "red";
+				document.getElementById("resp-ews").innerHTML = respEWS;
+				document.getElementById("resp-ews").style.color = "red";
+			}
+			else if(respiratory >= 9 && respiratory <= 19){
+				respEWS = 0;
+				document.getElementById("em-resp-logo").style.color = "green";
+				document.getElementById("em-resp-text").style.color = "green";
+				document.getElementById("resp-ews").innerHTML = respEWS;
+				document.getElementById("resp-ews").style.color = "green";
+			}
+			else if(respiratory >= 20 && respiratory <= 25){
+				respEWS = 1;
+				document.getElementById("em-resp-logo").style.color = "orange";
+				document.getElementById("em-resp-text").style.color = "orange";
+				document.getElementById("resp-ews").innerHTML = respEWS;
+				document.getElementById("resp-ews").style.color = "orange";
+			}
+			else if(respiratory >= 26 && respiratory <= 29){
+				respEWS = 2;
+				document.getElementById("em-resp-logo").style.color = "orange";
+				document.getElementById("em-resp-text").style.color = "orange";
+				document.getElementById("resp-ews").innerHTML = respEWS;
+				document.getElementById("resp-ews").style.color = "orange";
+			}
+			
+			//TEMPERATURE
+			
+			if(temperature <= 35){
+			
+				tempEWS = 2;
+				document.getElementById("em-temp-logo").style.color = "orange";
+				document.getElementById("em-temp-text").style.color = "orange";
+				document.getElementById("temp-ews").innerHTML = tempEWS;
+				document.getElementById("temp-ews").style.color = "orange";
+			}
+			else if(temperature >= 31.5 && temperature < 38){
+				tempEWS = 0;
+				document.getElementById("em-temp-logo").style.color = "green";
+				document.getElementById("em-temp-text").style.color = "green";
+				document.getElementById("temp-ews").innerHTML = tempEWS;
+				document.getElementById("temp-ews").style.color = "green";
+			}
+			else if(temperature >= 38 && temperature <= 39.5){
+				tempEWS = 2;
+				document.getElementById("em-temp-logo").style.color = "#ea7711";
+				document.getElementById("em-temp-text").style.color = "#ea7711";
+				document.getElementById("temp-ews").innerHTML = tempEWS;
+				document.getElementById("temp-ews").style.color = "#ea7711";
+			}
+			else if(temperature > 39.5){
+				tempEWS = 3;
+				document.getElementById("em-temp-logo").style.color = "red";
+				document.getElementById("em-temp-text").style.color = "red";
+				document.getElementById("temp-ews").innerHTML = tempEWS;
+				document.getElementById("temp-ews").style.color = "red";
+			}
+			
+			//OXYGEN Saturation
+			
+			if(oxySaturation < 85){
+			
+				sp02EWS = 3;
+				document.getElementById("em-sp02-logo").style.color = "red";
+				document.getElementById("em-sp02-text").style.color = "red";
+				document.getElementById("sp02-ews").innerHTML = sp02EWS;
+				document.getElementById("sp02-ews").style.color = "red";
+			}
+			else if(oxySaturation >= 85 && oxySaturation <= 89){
+			
+				sp02EWS = 2;
+				document.getElementById("em-sp02-logo").style.color = "orange";
+				document.getElementById("em-sp02-text").style.color = "orange";
+				document.getElementById("sp02-ews").innerHTML = sp02EWS;
+				document.getElementById("sp02-ews").style.color = "orange";
+			}
+			else if(oxySaturation >= 90 && oxySaturation <= 94){
+			
+				sp02EWS = 1;
+				document.getElementById("em-sp02-logo").style.color = "#ea7711";
+				document.getElementById("em-sp02-text").style.color = "#ea7711";
+				document.getElementById("sp02-ews").innerHTML = sp02EWS;
+				document.getElementById("sp02-ews").style.color = "#ea7711";
+			}
+			else if(oxySaturation >= 95){
+			
+				sp02EWS = 0;
+				document.getElementById("em-sp02-logo").style.color = "green";
+				document.getElementById("em-sp02-text").style.color = "green";
+				document.getElementById("sp02-ews").innerHTML = sp02EWS;
+				document.getElementById("sp02-ews").style.color = "green";
+			}
+			
+			//SYSTOLIC BLOOD Pressure TO BE REVIEWED
+			
+			if(sysBP <= 80){
+			
+				sysBPEWS = 3;
+				document.getElementById("em-sysBP-logo").style.color = "red";
+				document.getElementById("em-sysBP-text").style.color = "red";
+				document.getElementById("sysBP-ews").innerHTML = sysBPEWS;
+				document.getElementById("sysBP-ews").style.color = "red";
+			}
+			else if(sysBP >= 81 && sysBP <= 90){
+			
+				sysBPEWS = 2;
+				document.getElementById("em-sysBP-logo").style.color = "#ea7711";
+				document.getElementById("em-sysBP-text").style.color = "#ea7711";
+				document.getElementById("sysBP-ews").innerHTML = sysBPEWS;
+				document.getElementById("sysBP-ews").style.color = "#ea7711";
+			}
+				else if(sysBP >= 91 && sysBP <= 100){
+			
+				sysBPEWS = 1;
+				document.getElementById("em-sysBP-logo").style.color = "orange";
+				document.getElementById("em-sysBP-text").style.color = "orange";
+				document.getElementById("sysBP-ews").innerHTML = sysBPEWS;
+				document.getElementById("sysBP-ews").style.color = "orange";
+			}
+				else if(sysBP >= 101 && sysBP <= 109){
+			
+				sysBPEWS = 0;
+				document.getElementById("em-sysBP-logo").style.color = "green";
+				document.getElementById("em-sysBP-text").style.color = "green";
+				document.getElementById("sysBP-ews").innerHTML = sysBPEWS;
+				document.getElementById("sysBP-ews").style.color = "green";
+			}
+				else if(sysBP >= 110 && sysBP <= 120){
+			
+				sysBPEWS = 1;
+				document.getElementById("em-sysBP-logo").style.color = "orange";
+				document.getElementById("em-sysBP-text").style.color = "orange";
+				document.getElementById("sysBP-ews").innerHTML = sysBPEWS;
+				document.getElementById("sysBP-ews").style.color = "orange";
+			}
+				else if(sysBP > 120){
+			
+				sysBPEWS = 2;
+				document.getElementById("em-sysBP-logo").style.color = "#ea7711";
+				document.getElementById("em-sysBP-text").style.color = "#ea7711";
+				document.getElementById("sysBP-ews").innerHTML = sysBPEWS;
+				document.getElementById("sysBP-ews").style.color = "#ea7711";
+			}
+			
+			// LEVEL OF Conciousness
+			
+			if(conc == "Fine"){
+				concEWS = 0;
+				document.getElementById("em-conc-logo").style.color = "green";
+				document.getElementById("em-conc-text").style.color = "green";
+				document.getElementById("conc-ews").innerHTML = concEWS;
+				document.getElementById("conc-ews").style.color = "green";
+			}
+			else if(conc == "Weak"){
+				concEWS = 2;
+				document.getElementById("em-conc-logo").style.color = "orange";
+				document.getElementById("em-conc-text").style.color = "orange";
+				document.getElementById("conc-ews").innerHTML = concEWS;
+				document.getElementById("conc-ews").style.color = "orange";
+			}
+			
+			
+			
+			
+			//TOTAL EWS
+			
+			totalEWS = heartEWS + respEWS + tempEWS + sp02EWS + sysBPEWS + concEWS;			//Totals all updated EWS scores to generate a total
+			document.getElementById("totalEWS").innerHTML = totalEWS;						//Updates total score for user display
+			if(totalEWS < 1){																//Condition to determine the color/severity of the total score, based on EWS
+			document.getElementById("totalEWS").style.color = "green";
+			}
+			else if(totalEWS >= 1 && totalEWS <= 5){
+			document.getElementById("totalEWS").style.color = "orange";
+			}
+			else if(totalEWS >= 6 && totalEWS <= 7){
+			document.getElementById("totalEWS").style.color = "#ea7711";
+			}
+			else if(totalEWS >= 8 && totalEWS <= 9){
+			document.getElementById("totalEWS").style.color = "red";
+			}
+			else if(totalEWS > 9){
+			document.getElementById("totalEWS").style.color = "red";
+			}
+			
+			//PERCENTAGE BARS
+			var greenScore = 0;	
+			var orangeScore = 0;
+			var redScore = 0;
+			var list = [heartEWS, respEWS, tempEWS, sp02EWS, sysBPEWS];						//A list is created to allow distribution scores to be calculated.
+			
+			console.log(list);
+			
+			for (var k = 0; k < list.length; k++){											//The loop iterates through the list adds values to each bar based on its instance of finding a green, orange or red score
+				if(list[k] == 0){															//E.G. If a green score is found 3 times and a red score is found 2 times, the distribution will be => green = 60% orange = 0%
+					greenScore++;															// red = 40 %
+				}
+				if(list[k] > 1 && list[k] < 3){
+					orangeScore++;
+				}
+				if(list[k] == 3){
+					redScore++;
+				}
+			
+			}
+			
+			console.log(greenScore);
+			console.log(orangeScore);
+			console.log(redScore);
+			
+			greenWidth = (greenScore/7)*100;												// Total list length will always be 7 as these are the vital signs used to calculate EWS. This gives us a percentage of 100.
+			orangeWidth = (orangeScore/7)*100;
+			redWidth = (redScore/7)*100;
+			
+			
+			var gWidth = greenWidth.toFixed(1);												// 1 passes the value of true to the progress bar script to display it as fixed.
+			var oWidth = orangeWidth.toFixed(1);	
+			var rWidth = redWidth.toFixed(1);	
+			
+			console.log(gWidth);
+			console.log(greenWidth);
+			console.log(oWidth);
+			console.log(orangeWidth);
+			console.log(rWidth);
+			console.log(redWidth);
+			
+			document.getElementById("green-bar").style.width = greenWidth+"%";				//greenWidth refers to the percentage of green values, i.e of 100.
+			document.getElementById("green-bar-text").innerHTML = gWidth+"%";
+			document.getElementById("orange-bar").style.width = orangeWidth+"%";
+			document.getElementById("orange-bar-text").innerHTML = oWidth+"%";
+			document.getElementById("red-bar").style.width = redWidth+"%";
+			document.getElementById("red-bar-text").innerHTML = rWidth+"%";
+		
+			
+			
+			
+			
+			
+			var lineChartData = {
+		labels : ["Day 1","Day 2","Day 3","Day 4","Day 5", "Day 6"],						//Labels for the bottem axis of the first table/chart to be displayed. To be redacted in revised build.
+		datasets : [
+			{
+				label: "My First dataset",
+				fillColor : "rgba(220,220,220,0.2)",
+				strokeColor : "rgba(220,220,220,1)",
+				pointColor : "rgba(220,220,220,1)",
+				pointStrokeColor : "#fff",
+				pointHighlightFill : "#fff",
+				pointHighlightStroke : "rgba(220,220,220,1)",
+				data : [result[10], result[38], result[66], result[94], 44, 88]				
+			},
+			{
+				label: "My Second dataset",
+				fillColor : "rgba(48, 164, 255, 0.2)",
+				strokeColor : "rgba(48, 164, 255, 1)",
+				pointColor : "rgba(48, 164, 255, 1)",
+				pointStrokeColor : "#fff",
+				pointHighlightFill : "#fff",
+				pointHighlightStroke : "rgba(48, 164, 255, 1)",
+				data : [77, 55, 77, 98, 120, 60]
+			}
+		]
+
+	
+	}
+	
+	document.getElementById("chart-placeholder").append("Heartrate History");
+	var chart1 = document.getElementById("bar-chart").getContext("2d");
+			
+		window.myLine = new Chart(chart1).Line(lineChartData, {
+		responsive: true,
+		scaleLineColor: "rgba(0,0,0,.2)",
+		scaleGridLineColor: "rgba(0,0,0,.05)",
+		scaleFontColor: "#c5c7cc"
+		});
+
+			
+}
+
+	
+
+		function lineFunction(option){														// option is the returned value based on user selection, i.e heartrate in the chart dropdown.
+		
+		var chartTitle;		
+		var value1 = heartrate;	
+		
+		if (option == "heartrate"){															// if option is selected as heartrate. The values are assigned on the 5 values returned from the sql database for that user.
+																							// 5 of the latest results are always returned from the database when the user is logged in
+			value1 = result[10];
+			value2 = result[38];
+			value3 = result[66];
+			value4 = result[94];
+			value5 = result[122];
+		
+			chartTitle = "Heartrate History";												// Updates chart title
+		}
+		if(option == "respiratory"){
+		
+			value1 = result[12];
+			value2 = result[40];
+			value3 = result[68];
+			value4 = result[96];
+			value5 = result[124];
+		
+			chartTitle = "Respiratory Rate History";
+		}
+		
+		if (option == "temp"){
+		
+			value1 = result[14];
+			value2 = result[42];
+			value3 = result[70];
+			value4 = result[98];
+			value5 = result[126];
+		
+			chartTitle = "Body Temperature History";		
+		}
+		
+		if (option == "weight"){
+		
+			value1 = result[30];
+			value2 = result[58];
+			value3 = result[86];
+			value4 = result[114];
+			value5 = result[142];
+		
+			chartTitle = "Weight History";		
+		}
+		
+		if (option == "sysBP"){
+		
+			value1 = result[28];
+			value2 = result[56];
+			value3 = result[84];
+			value4 = result[112];
+			value5 = result[140];
+		
+			chartTitle = "Systolic Blood Pressure History";		
+		}
+		console.log(value2);
+		console.log(value3);
+		
+		/*if(value1 = 'undefined'){													
+			value1 = 0;
+		}
+		if(value2 = 'undefined'){
+			value2 = 0;
+		}
+		if(value3 = 'undefined'){
+			value3 = 0;
+		}
+		if(value4 = 'undefined'){
+			value4 = 0;
+		}
+		if(value5 = 'undefined'){
+			value5 = 0;
+		}*/
+		
+		
+				var lineChartData = {
+		labels : ["Day 1","Day 2","Day 3","Day 4","Day 5"],	
+		datasets : [
+			{
+				label: "My First dataset",
+				fillColor : "rgba(220,220,220,0.2)",
+				strokeColor : "rgba(220,220,220,1)",
+				pointColor : "rgba(220,220,220,1)",
+				pointStrokeColor : "#fff",
+				pointHighlightFill : "#fff",
+				pointHighlightStroke : "rgba(220,220,220,1)",
+				data : [value1, value2, value3, value4, value5]									// Displays the values based on user input.
+			},
+			{
+				label: "My Second dataset",
+				fillColor : "rgba(48, 164, 255, 0.2)",
+				strokeColor : "rgba(48, 164, 255, 1)",
+				pointColor : "rgba(48, 164, 255, 1)",
+				pointStrokeColor : "#fff",
+				pointHighlightFill : "#fff",
+				pointHighlightStroke : "rgba(48, 164, 255, 1)",
+				data : [value1, value2, value3, value4, value5]
+			}
+		]
+
+	}
+	
+	document.getElementById("chart-placeholder").innerHTML = "";
+	document.getElementById("chart-placeholder").append(chartTitle);
+	document.getElementById("bar-chart").remove(); 												// this is my <canvas> element
+	$('#canvas-wrapper').append('<canvas class="main-chart" id="bar-chart" height="200" width="600"></canvas>');
+
+	var chart2 = document.getElementById("bar-chart").getContext("2d");
+	
+			
+		window.myLine = new Chart(chart2).Line(lineChartData, {									// Updates the linechart to the selected option
+		responsive: true,
+		scaleLineColor: "rgba(0,0,0,.2)",
+		scaleGridLineColor: "rgba(0,0,0,.05)",
+		scaleFontColor: "#c5c7cc"
+		});
+
+	}
+		
+		
+	//var API_URL = 'https://mb02phontj.execute-api.ap-southeast-1.amazonaws.com/prod'								///Earlier dynamoDB functionality. Purely for reference and assessment purposes as this was a large part of our original build
+	//var DATA_URL = 'https://mb02phontj.execute-api.ap-southeast-1.amazonaws.com/prod/' //FOR SEARCHING			//This demonstrates that the transition from dynamoDB to mysql was not severe or a hinderance on code
+	//fetch(API_URL,{
+	//method: 'GET',
+	// headers: {
+   //     'Content-Type': 'application/json',
+  //  },
+	//body: {
+	
+  //      subId: subId
+
+  //  }
+	//})
+  //  .then(res => res.json())
+  //  .then((out) => {
+		//var out1 = JSON.stringify(out);
+		//var str = out + '';
+	//	var arr = str.split('"');
+		
+		
+		//var heartrate = result[3];
+	//	var respiratory = arr[2];
+	//	var supp02 = arr[3];
+	//	var weight = arr[4];
+	//	var oxySaturation = arr[5];
+	//	var height = arr[6];
+	//	var temp = arr[15];
+	//	var conc = arr[27];
+	//	var sysBP = arr[19];
+	//	console.log(arr);
+		//heartrate = heartrate.replace(/[{()}: ,"]/g, "");
+		//respiratory = respiratory.replace(/[{()}: ,"]/g, "");
+		//height = height.replace(/[{()}: ,"]/g, "");
+		//temp = temp.replace(/[{()}: ,"]/g, "");
+		//weight = weight.replace(/[{()}: ,"]/g, "");
+		//supp02 = supp02.replace(/[{()}: ,"]/g, "");
+		//conc = conc.replace(/[{()}: ,"]/g, "");
+		//sysBP = sysBP.replace(/[{()}: ,"]/g, "");
+		
+		//document.getElementById("heart").innerHTML = heartrate;
+		//document.getElementById("resp").innerHTML = respiratory;
+		//document.getElementById("oxySaturation").innerHTML = oxySaturation;
+		//document.getElementById("temp").innerHTML = temp;
+		//document.getElementById("weight").innerHTML = weight;
+		//document.getElementById("conc").innerHTML = conc;
+		//document.getElementById("supp02").innerHTML = supp02;
+		//document.getElementById("sysBP").innerHTML = sysBP;
+		
+		
+       
+	//	var age = 27;
+		//var temp = 37.2;
+		//var height = 182;
+	//	var idealWeight = 86; //TODO: Implement J.D. Robinson Formula and KG/Foot conversion
+		
+		/*var barChartData = {
+		variables: [],
+		labels : ["Heartrate","Respiratory Rate","Temperature","Weight","Systolic Blood Pressure", "Oxygen Saturation"],
+		datasets : [
+			{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,0.8)",
+				highlightFill: "rgba(220,220,220,0.75)",
+				highlightStroke: "rgba(220,220,220,1)",
+				data : [67, 16, 37.0, idealWeight, 120, 97]
+			},
+			{
+				fillColor : "rgba(48, 164, 255, 0.2)",
+				strokeColor : "rgba(48, 164, 255, 0.8)",
+				highlightFill : "rgba(48, 164, 255, 0.75)",
+				highlightStroke : "rgba(48, 164, 255, 1)",
+				data : [heartrate, respiratory, temp, weight, sysBP, oxySaturation]
+			}
+		]
+
+	}*/
+	/*
+	var lineChartData = {
+		labels : ["Day 1","Day 2","Day 3","Day 4","Day 5"],
+		datasets : [
+			{
+				label: "My First dataset",
+				fillColor : "rgba(220,220,220,0.2)",
+				strokeColor : "rgba(220,220,220,1)",
+				pointColor : "rgba(220,220,220,1)",
+				pointStrokeColor : "#fff",
+				pointHighlightFill : "#fff",
+				pointHighlightStroke : "rgba(220,220,220,1)",
+				data : [3, 3, 2, 1, 1, 0]
+			},
+			{
+				label: "My Second dataset",
+				fillColor : "rgba(48, 164, 255, 0.2)",
+				strokeColor : "rgba(48, 164, 255, 1)",
+				pointColor : "rgba(48, 164, 255, 1)",
+				pointStrokeColor : "#fff",
+				pointHighlightFill : "#fff",
+				pointHighlightStroke : "rgba(48, 164, 255, 1)",
+				data : [2, 2, 6, 2, 1, 0]
+			}
+		]
+
+	}
+		
+		var chart2 = document.getElementById("bar-chart").getContext("2d");
+			
+		window.myLine = new Chart(chart2).Line(lineChartData, {
+		responsive: true,
+		scaleLineColor: "rgba(0,0,0,.2)",
+		scaleGridLineColor: "rgba(0,0,0,.05)",
+		scaleFontColor: "#c5c7cc"
+		});
+*/
+	//}).catch(err => console.error(err));
+	
+	
+
+
+
+
+	</script>
+	<script src="public/js/amazon-cognito-identity.min.js"></script>
+	<script>
+	
+	var accessKey = window.sessionStorage.getItem("accessKeyId");														 //Retrieval of user email for display purposes
+	var email = window.localStorage.getItem("CognitoIdentityServiceProvider.4q10i2gsdggtc8452s0ogvdp82.LastAuthUser");   //Where user email is stored
+	
+	document.getElementById("username").innerHTML = email;
+	
+	
+	var CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;    													 //
+		var poolData = { UserPoolId : 'ap-southeast-1_LFIl6Lny1',								
+        ClientId : '7pqubjs3pjjuhmueidce2t2qu4'
+		};
+		var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);	 	
+		
+	
+
+			
+	function logoutFunction(){
+		sessionStorage.clear();
+		localStorage.clear();					//clear storage of user instance
+	}	
+		
+	
+	</script>
+	
+
+
+	
+		
+
+</body></html>

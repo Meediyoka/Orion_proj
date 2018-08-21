@@ -1,0 +1,21 @@
+{
+  "name": "prototype",
+  "version": "1.0.0",
+  "description": "Prototype2",
+  "main": "app.js",
+  "author": "Thomas Bird, Geoff Lee",
+  "license": "ISC",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "amazon-cognito-identity-js": "^2.0.1",
+    "aws-sdk": "^2.239.1",
+    "express": "^4.16.3",
+    "mysql": "latest",
+    "pg": "^7.4.1"
+  },
+  "devDependencies": {
+    "json-loader": "^0.5.7"
+  }
+}
